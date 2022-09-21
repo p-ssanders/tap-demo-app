@@ -6,3 +6,9 @@ management:
     web:
       exposure:
         include: "*"
+spring:
+  cloud:
+    stream:
+      bindings:
+        test-data-created:
+          destination: test-data-created
