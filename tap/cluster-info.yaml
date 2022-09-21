@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tap-demo-app
+  description: Spring Boot Web Application
+  tags:
+    - java
+    - spring
+    - web
+    - tanzu
+    - mysql
+    - rabbitmq
+  annotations:
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=tap-demo-app'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: demo-team

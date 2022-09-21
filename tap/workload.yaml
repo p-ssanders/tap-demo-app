@@ -19,14 +19,14 @@ spec:
       url: https://github.com/p-ssanders/tap-demo-app
       ref:
         branch: main
-#  serviceClaims:
-#    - name: db
-#      ref:
-#        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-#        kind: ResourceClaim
-#        name: postgres-2
-#    - name: rabbitmq
-#      ref:
-#        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-#        kind: ResourceClaim
-#        name: rmq-1
+  serviceClaims:
+    - name: mysql
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: mysql-1-demo-team
+    - name: rabbitmq
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ResourceClaim
+        name: rmq-1-demo-team
