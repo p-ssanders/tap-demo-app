@@ -12,3 +12,5 @@ spring:
       bindings:
         test-data-created:
           destination: test-data-created
+  application:
+    name: tap-demo-app

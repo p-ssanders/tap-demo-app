@@ -2,10 +2,16 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: tap-demo-app
+  namespace: demo-team
   labels:
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/part-of: tap-demo-app
 spec:
+  source:
+    git:
+      url: https://github.com/p-ssanders/tap-demo-app
+      ref:
+        branch: main
   build:
     env:
       - name: BP_JVM_VERSION
@@ -14,11 +20,6 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
-  source:
-    git:
-      url: https://github.com/p-ssanders/tap-demo-app
-      ref:
-        branch: main
   serviceClaims:
     - name: mysql
       ref:

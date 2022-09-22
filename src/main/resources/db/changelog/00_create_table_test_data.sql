@@ -1,5 +1,6 @@
 create table test_data (
-  id bigserial primary key,
-  data varchar(255),
-  created_at timestamp default current_timestamp
+  id bigint not null auto_increment,
+  data varchar(255) not null,
+  created_at timestamp default now(),
+  primary key (id)
 );
