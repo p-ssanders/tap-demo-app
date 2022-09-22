@@ -1,0 +1,13 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ResourceClaim
+metadata:
+  finalizers:
+  - resourceclaims.services.apps.tanzu.vmware.com/finalizer
+  name: rmq-1
+  namespace: demo-team
+spec:
+  ref:
+    apiVersion: rabbitmq.com/v1beta1
+    kind: RabbitmqCluster
+    name: rmq-1
+    namespace: service-instances

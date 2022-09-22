@@ -25,9 +25,9 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: mysql-1-demo-team
+        name: mysql-1
     - name: rabbitmq
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ResourceClaim
-        name: rmq-1-demo-team
+        name: rmq-1
