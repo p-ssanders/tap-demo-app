@@ -1,5 +1,9 @@
-debug: true
+#debug: true
 spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:33060/demo
+    username: demo
+    password: demo

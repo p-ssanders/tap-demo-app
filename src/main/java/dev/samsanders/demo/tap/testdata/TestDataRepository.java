@@ -8,14 +8,12 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 
+import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class TestDataRepository implements Repository<TestData, Long> {
 
@@ -27,17 +25,16 @@ public class TestDataRepository implements Repository<TestData, Long> {
     }
 
     TestData create(TestData testData) {
-        String insertQuery = "insert into test_data (data) values (:testData)";
+        String insertQuery = "insert into test_data (data, created_at) values (:testData, :createdAt)";
         Map<String, Object> values = new HashMap<>();
         values.put("testData", testData.data());
+        Instant createdAt = Instant.now();
+        values.put("createdAt", new Timestamp(createdAt.toEpochMilli()));
 
         GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
         namedParameterJdbcTemplate.update(insertQuery, new MapSqlParameterSource(values), generatedKeyHolder);
 
-        Long id = (Long) generatedKeyHolder.getKeys().get("id");
-        Instant createdAt = ((Timestamp) generatedKeyHolder.getKeys().get("created_at")).toInstant();
-
-        return new TestData(id, testData.data(), createdAt);
+        return new TestData(((BigInteger) generatedKeyHolder.getKey()).longValue(), testData.data(), createdAt);
     }
 
     long count() {
